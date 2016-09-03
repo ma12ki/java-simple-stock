@@ -1,5 +1,6 @@
 package pl.mzolkiewski.simplestock.exchanges;
 
+import java.util.NoSuchElementException;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -45,5 +46,10 @@ public class ExchangeServiceTest {
         Exchange exchange = service.getOne(exchangeSymbol);
         
         assertNotNull(exchange);
+    }
+    
+    @Test(expected=NoSuchElementException.class)
+    public void testGetOne_missing() {
+        Exchange exchange = service.getOne("nonexistent");
     }
 }
