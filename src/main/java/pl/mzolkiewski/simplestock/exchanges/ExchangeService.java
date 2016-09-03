@@ -14,12 +14,18 @@ public class ExchangeService implements IExchangeService {
     
     @Override
     public Exchange create(String symbol) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Exchange exchange = new Exchange(symbol);
+        exchanges.add(exchange);
+        
+        return exchange;
     }
 
     @Override
     public Exchange getOne(String symbol) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return exchanges.stream()
+                .filter(e -> e.getSymbol().equals(symbol))
+                .findFirst()
+                .get();
     }
     
 }

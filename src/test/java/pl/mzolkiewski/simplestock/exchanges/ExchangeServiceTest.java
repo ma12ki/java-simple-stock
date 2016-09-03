@@ -12,24 +12,16 @@ import static org.junit.Assert.*;
  * @author Martin
  */
 public class ExchangeServiceTest {
-    
-    public ExchangeServiceTest() {
-    }
-    
-    @BeforeClass
-    public static void setUpClass() {
-    }
-    
-    @AfterClass
-    public static void tearDownClass() {
-    }
+    private ExchangeService service;
     
     @Before
     public void setUp() {
+        service = new ExchangeService();
     }
     
     @After
     public void tearDown() {
+        service = null;
     }
 
     // TODO add test methods here.
@@ -37,4 +29,21 @@ public class ExchangeServiceTest {
     //
     // @Test
     // public void hello() {}
+    @Test
+    public void testCreate() {
+        String exchangeSymbol = "xD";
+        Exchange exchange = service.create(exchangeSymbol);
+        
+        assertEquals(exchangeSymbol, exchange.getSymbol());
+    }
+    
+    @Test
+    public void testGetOne() {
+        String exchangeSymbol = "xD";
+        service.create(exchangeSymbol);
+        
+        Exchange exchange = service.getOne(exchangeSymbol);
+        
+        assertNotNull(exchange);
+    }
 }
