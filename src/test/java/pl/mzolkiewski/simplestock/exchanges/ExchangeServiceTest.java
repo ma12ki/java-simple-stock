@@ -25,17 +25,32 @@ public class ExchangeServiceTest {
         service = null;
     }
 
-    // TODO add test methods here.
-    // The methods must be annotated with annotation @Test. For example:
-    //
-    // @Test
-    // public void hello() {}
     @Test
     public void testCreate() {
         String exchangeSymbol = "xD";
         Exchange exchange = service.create(exchangeSymbol);
         
         assertEquals(exchangeSymbol, exchange.getSymbol());
+    }
+
+    @Test(expected=IllegalArgumentException.class)
+    public void testCreate_duplicate() {
+        String exchangeSymbol = "xD";
+        service.create(exchangeSymbol);
+        service.create(exchangeSymbol);
+    }
+    
+    @Test
+    public void testHas_present() {
+        String exchangeSymbol = "xD";
+        Exchange exchange = service.create(exchangeSymbol);
+        
+        assertTrue(service.has(exchangeSymbol));
+    }
+    
+    @Test
+    public void testHas_notPresent() {
+        assertFalse(service.has("xD"));
     }
     
     @Test

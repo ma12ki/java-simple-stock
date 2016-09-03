@@ -3,6 +3,7 @@ package pl.mzolkiewski.simplestock.exchanges;
 import com.google.inject.Singleton;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 /**
  *
@@ -14,10 +15,23 @@ public class ExchangeService implements IExchangeService {
     
     @Override
     public Exchange create(String symbol) {
+        if (this.has(symbol)) {
+            throw new IllegalArgumentException(symbol);
+        }
+        
         Exchange exchange = new Exchange(symbol);
         exchanges.add(exchange);
         
         return exchange;
+    }
+    
+    public boolean has(String symbol) {
+        try {
+            Exchange exchange = this.getOne(symbol);
+            return true;
+        } catch(NoSuchElementException e) {
+            return false;
+        }
     }
 
     @Override
