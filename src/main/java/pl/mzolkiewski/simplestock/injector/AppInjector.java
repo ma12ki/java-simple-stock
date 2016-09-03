@@ -5,12 +5,12 @@ import pl.mzolkiewski.simplestock.calculators.ExchangeCalculator;
 import pl.mzolkiewski.simplestock.calculators.IExchangeCalculator;
 import pl.mzolkiewski.simplestock.calculators.IStockCalculator;
 import pl.mzolkiewski.simplestock.calculators.StockCalculator;
-import pl.mzolkiewski.simplestock.exchanges.ExchangeStore;
-import pl.mzolkiewski.simplestock.exchanges.IExchangeStore;
-import pl.mzolkiewski.simplestock.stocks.IStockStore;
-import pl.mzolkiewski.simplestock.stocks.StockStore;
-import pl.mzolkiewski.simplestock.trades.ITradeStore;
-import pl.mzolkiewski.simplestock.trades.TradeStore;
+import pl.mzolkiewski.simplestock.exchanges.ExchangeService;
+import pl.mzolkiewski.simplestock.exchanges.IExchangeService;
+import pl.mzolkiewski.simplestock.stocks.IStockService;
+import pl.mzolkiewski.simplestock.stocks.StockService;
+import pl.mzolkiewski.simplestock.trades.ITradeService;
+import pl.mzolkiewski.simplestock.trades.TradeService;
 
 /**
  *
@@ -20,9 +20,9 @@ public class AppInjector extends AbstractModule {
 
     @Override
     protected void configure() {
-        bind(ITradeStore.class).to(TradeStore.class);
-        bind(IStockStore.class).to(StockStore.class);
-        bind(IExchangeStore.class).to(ExchangeStore.class);
+        bind(ITradeService.class).to(TradeService.class);
+        bind(IStockService.class).to(StockService.class);
+        bind(IExchangeService.class).to(ExchangeService.class);
         bind(IStockCalculator.class).to(StockCalculator.class);
         bind(IExchangeCalculator.class).to(ExchangeCalculator.class);
     }

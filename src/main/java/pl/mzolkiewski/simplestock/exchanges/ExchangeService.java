@@ -9,7 +9,7 @@ import java.util.List;
  * @author Martin
  */
 @Singleton
-public class ExchangeStore implements IExchangeStore {
+public class ExchangeService implements IExchangeService {
     private List<Exchange> exchanges = new ArrayList<>();
     
     @Override

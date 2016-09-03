@@ -2,8 +2,8 @@ package pl.mzolkiewski.simplestock.calculators;
 
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
-import pl.mzolkiewski.simplestock.stocks.IStockStore;
-import pl.mzolkiewski.simplestock.trades.ITradeStore;
+import pl.mzolkiewski.simplestock.stocks.IStockService;
+import pl.mzolkiewski.simplestock.trades.ITradeService;
 
 /**
  *
@@ -11,11 +11,11 @@ import pl.mzolkiewski.simplestock.trades.ITradeStore;
  */
 @Singleton
 public class StockCalculator implements IStockCalculator {
-    private ITradeStore tradeStore;
-    private IStockStore stockStore;
+    private ITradeService tradeStore;
+    private IStockService stockStore;
     
     @Inject
-    public StockCalculator(ITradeStore tradeStore, IStockStore stockStore) {
+    public StockCalculator(ITradeService tradeStore, IStockService stockStore) {
         this.tradeStore = tradeStore;
         this.stockStore = stockStore;
     }
