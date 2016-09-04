@@ -10,9 +10,9 @@ import java.util.function.Predicate;
  */
 public interface ITradeService {
     
-    Trade create(String stockSymbol, TradeType tradeType, int quantity, double price, Timestamp timestamp);
-    
     Trade create(String stockSymbol, TradeType tradeType, int quantity, double price);
+    
+    Trade create(String stockSymbol, TradeType tradeType, int quantity, double price, Timestamp timestamp);
     
     List<Trade> getList(Predicate<Trade> p);
 

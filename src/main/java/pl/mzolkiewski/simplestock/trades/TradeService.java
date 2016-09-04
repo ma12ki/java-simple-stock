@@ -24,13 +24,24 @@ public class TradeService implements ITradeService {
     }
     
     @Override
-    public Trade create(String stockSymbol, TradeType tradeType, int quantity, double price, Timestamp timestamp) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
     public Trade create(String stockSymbol, TradeType tradeType, int quantity, double price) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return this.create(stockSymbol, tradeType, quantity, price, new Timestamp(System.currentTimeMillis()));
+    }
+    
+    @Override
+    public Trade create(String stockSymbol, TradeType tradeType, int quantity, double price, Timestamp timestamp) {
+        verifyStockExists(stockSymbol);
+        
+        Trade trade = new Trade(stockSymbol, tradeType, quantity, price, timestamp);
+        trades.add(trade);
+        
+        return trade;
+    }
+    
+    private void verifyStockExists(String stockSymbol) {
+        if (!stockService.has(stockSymbol)) {
+            throw new IllegalArgumentException("Unknown stock symbol: " + stockSymbol);
+        }
     }
 
     @Override

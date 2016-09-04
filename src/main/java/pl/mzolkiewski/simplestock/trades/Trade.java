@@ -33,6 +33,10 @@ public class Trade {
     public String getStockSymbol() {
         return stockSymbol;
     }
+    
+    public TradeType getTradeType() {
+        return tradeType;
+    }
 
     public int getQuantity() {
         return quantity;
