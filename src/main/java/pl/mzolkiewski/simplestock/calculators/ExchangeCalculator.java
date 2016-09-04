@@ -2,10 +2,7 @@ package pl.mzolkiewski.simplestock.calculators;
 
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
-import java.util.ArrayList;
 import java.util.List;
-import pl.mzolkiewski.simplestock.exchanges.Exchange;
-import pl.mzolkiewski.simplestock.exchanges.IExchangeService;
 import pl.mzolkiewski.simplestock.stocks.AbstractStock;
 import pl.mzolkiewski.simplestock.stocks.IStockService;
 
