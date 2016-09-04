@@ -5,9 +5,11 @@ package pl.mzolkiewski.simplestock.calculators;
  * @author Martin
  */
 public interface IStockCalculator {
-    double dividendYield(String stockSymbol);
+    
+    double price(String StockSymbol);
     
     double PERatio(String stockSymbol);
     
-    double price(String StockSymbol);
+    double dividendYield(String stockSymbol);
+    
 }
