@@ -16,7 +16,8 @@ import pl.mzolkiewski.simplestock.stocks.PreferredStock;
 import pl.mzolkiewski.simplestock.trades.TradeType;
 
 /**
- *
+ * This is where we can interact with the whole app through one object.
+ * 
  * @author Martin
  */
 @Category(IntegrationTest.class)
