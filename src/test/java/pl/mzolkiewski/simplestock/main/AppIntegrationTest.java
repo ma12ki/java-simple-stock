@@ -39,27 +39,25 @@ public class AppIntegrationTest {
     
     @Test
     public void testAllShareIndex() {
-        String exchangeSymbol = "MAO";
-        setUpData(exchangeSymbol);
-        setUpData("OTHER");
+        String exchangeSymbol = "GBCE";
+        app.getExchangeService().create(exchangeSymbol);
         
+        createStockWithTrades(new CommonStock("TEA", exchangeSymbol, 100,  0));
+        createStockWithTrades(new CommonStock("POP", exchangeSymbol, 100,  8));
+        createStockWithTrades(new CommonStock("ALE", exchangeSymbol,  60,  23));
+        createStockWithTrades(new PreferredStock("GIN", exchangeSymbol, 100,  8, 0.02));
+        createStockWithTrades(new CommonStock("JOE", exchangeSymbol, 250,  13));
+                
         double allShareIndex = app.getExchangeCalculator().allShareIndex(exchangeSymbol);
         
-        assertEquals(25.0, allShareIndex, 0);
+        assertEquals(25.0, allShareIndex, 0.001);
     }
     
     @Test
     public void testAllShareIndex_noStocks() {
-        double allShareIndex = app.getExchangeCalculator().allShareIndex("MAO");
+        double allShareIndex = app.getExchangeCalculator().allShareIndex("GBCE");
         
         assertEquals(0, allShareIndex, 0);
-    }
-
-    private void setUpData(String exchangeSymbol) {
-        app.getExchangeService().create(exchangeSymbol);
-        
-        createStockWithTrades(new PreferredStock("LOL" + exchangeSymbol, exchangeSymbol, 100, 10, 1));
-        createStockWithTrades(new CommonStock("xD" + exchangeSymbol, exchangeSymbol, 100, 10));
     }
     
     private void createStockWithTrades(AbstractStock stock) {
