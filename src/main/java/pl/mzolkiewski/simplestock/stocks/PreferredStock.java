@@ -7,8 +7,8 @@ package pl.mzolkiewski.simplestock.stocks;
 public class PreferredStock extends AbstractStock {
     private double fixedDividend;
 
-    public PreferredStock(String symbol, String exchangeSymbol, double lastDividend, double fixedDividend, double parValue) {
-        super(symbol, exchangeSymbol, lastDividend, parValue);
+    public PreferredStock(String symbol, String exchangeSymbol, double parValue, double lastDividend, double fixedDividend) {
+        super(symbol, exchangeSymbol, parValue, lastDividend);
         this.fixedDividend = fixedDividend;
     }
 

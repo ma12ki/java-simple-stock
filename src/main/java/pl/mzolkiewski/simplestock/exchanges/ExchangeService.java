@@ -27,7 +27,7 @@ public class ExchangeService implements IExchangeService {
     
     public boolean has(String symbol) {
         try {
-            Exchange exchange = this.getOne(symbol);
+            this.getOne(symbol);
             return true;
         } catch(NoSuchElementException e) {
             return false;

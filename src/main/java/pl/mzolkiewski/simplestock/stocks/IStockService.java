@@ -8,9 +8,11 @@ import java.util.List;
  */
 public interface IStockService {
     
-    CommonStock create(String stockSymbol, String exchangeSymbol, double lastDividend, double parValue);
+    CommonStock create(String stockSymbol, String exchangeSymbol, double parValue, double lastDividend);
     
-    PreferredStock create(String symbol, String exchangeSymbol, double lastDividend, double fixedDividend, double parValue);
+    PreferredStock create(String stockSymbol, String exchangeSymbol, double parValue, double lastDividend, double fixedDividend);
+    
+    boolean has(String stockSymbol);
     
     AbstractStock getByStockSymbol(String stockSymbol);
     

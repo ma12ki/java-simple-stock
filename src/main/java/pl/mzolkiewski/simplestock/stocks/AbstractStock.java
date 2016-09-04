@@ -7,14 +7,14 @@ package pl.mzolkiewski.simplestock.stocks;
 public abstract class AbstractStock {
     private String stockSymbol;
     private String exchangeSymbol;
-    private double lastDividend;
     private double parValue;
+    private double lastDividend;
     
-    public AbstractStock(String stockSymbol, String exchangeSymbol, double lastDividend, double parValue) {
+    public AbstractStock(String stockSymbol, String exchangeSymbol, double parValue, double lastDividend) {
         this.stockSymbol = stockSymbol;
         this.exchangeSymbol = exchangeSymbol;
-        this.lastDividend = lastDividend;
         this.parValue = parValue;
+        this.lastDividend = lastDividend;
     }
 
     public String getStockSymbol() {
@@ -25,11 +25,11 @@ public abstract class AbstractStock {
         return exchangeSymbol;
     }
 
-    public double getLastDividend() {
-        return lastDividend;
-    }
-
     public double getParValue() {
         return parValue;
+    }
+    
+    public double getLastDividend() {
+        return lastDividend;
     }
 }

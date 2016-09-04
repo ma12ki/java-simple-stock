@@ -41,7 +41,7 @@ public class ExchangeServiceTest {
     }
     
     @Test
-    public void testHas_present() {
+    public void testHas_true() {
         String exchangeSymbol = "xD";
         Exchange exchange = service.create(exchangeSymbol);
         
@@ -49,7 +49,7 @@ public class ExchangeServiceTest {
     }
     
     @Test
-    public void testHas_notPresent() {
+    public void testHas_false() {
         assertFalse(service.has("xD"));
     }
     
@@ -61,6 +61,7 @@ public class ExchangeServiceTest {
         Exchange exchange = service.getOne(exchangeSymbol);
         
         assertNotNull(exchange);
+        assertEquals(exchangeSymbol, exchange.getSymbol());
     }
     
     @Test(expected=NoSuchElementException.class)
